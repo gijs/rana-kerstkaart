@@ -177,8 +177,8 @@ function App() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        Het hele team van Rana wenst je een sprankelend einde van het jaar en
-        een water 2027.
+        Het hele team van Rana wenst je een veel geluk
+        en een hydrodynamisch 2027!
       </motion.p>
 
       <SnowGlobe size={320} />
