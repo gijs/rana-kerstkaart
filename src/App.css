@@ -1,0 +1,235 @@
+.card {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px 40px;
+  overflow: hidden;
+}
+
+/* ---- ambient background snow ---- */
+.bg-snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-flake {
+  position: absolute;
+  top: -10px;
+  border-radius: 50%;
+  background: var(--white);
+  opacity: 0.75;
+  animation-name: drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(-5vh) translateX(0);
+  }
+  to {
+    transform: translateY(105vh) translateX(var(--drift, 20px));
+  }
+}
+
+/* ---- header text ---- */
+.brand {
+  position: relative;
+  z-index: 1;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+  margin: 0 0 6px;
+}
+
+.headline {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(28px, 6vw, 44px);
+  font-weight: 800;
+  color: var(--navy-900);
+  text-align: center;
+  margin: 0 0 10px;
+  line-height: 1.15;
+}
+
+.headline .dot {
+  color: var(--blue-500);
+}
+
+.subhead {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  text-align: center;
+  color: var(--blue-700);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 28px;
+}
+
+/* ---- snow globe ---- */
+.snowglobe-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.globe-pivot {
+  position: relative;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 18px 30px rgba(20, 44, 71, 0.28));
+}
+
+.globe-rotator {
+  position: absolute;
+  inset: 0;
+}
+
+.snowglobe {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.snowglobe:active {
+  cursor: grabbing;
+}
+
+.dome-scene-clip {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.55), transparent 45%),
+    var(--blue-50);
+}
+
+.glass-dome {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.glass-highlight {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 55% 32% at 30% 20%,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.15) 55%,
+    transparent 75%
+  );
+  mix-blend-mode: screen;
+}
+
+.glass-rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.55),
+    inset 0 -18px 26px -10px rgba(20, 44, 71, 0.35),
+    inset 0 14px 22px -12px rgba(255, 255, 255, 0.8);
+}
+
+.globe-base {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -6px;
+  height: 34px;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(180deg, var(--navy-700) 0%, var(--navy-900) 100%);
+  box-shadow: 0 10px 18px rgba(20, 44, 71, 0.35);
+}
+
+.globe-base-top {
+  position: absolute;
+  top: -5px;
+  left: 4%;
+  width: 92%;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--blue-400), var(--blue-600));
+}
+
+.interact-hint {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  font-size: 13.5px;
+  color: var(--blue-600);
+  text-align: center;
+  max-width: 260px;
+}
+
+.enable-motion-btn {
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  background: var(--navy-800);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  max-width: 280px;
+  text-align: center;
+}
+
+.enable-motion-btn:active {
+  background: var(--navy-900);
+}
+
+.permission-denied-note {
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--blue-500);
+  text-align: center;
+  max-width: 260px;
+}
+
+/* ---- footer ---- */
+.footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 30px;
+  text-align: center;
+  color: var(--blue-500);
+  font-size: 13px;
+}
+
+.footer strong {
+  color: var(--navy-800);
+}
+
+@media (max-width: 380px) {
+  .headline {
+    font-size: 26px;
+  }
+}
